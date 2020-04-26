@@ -4,6 +4,17 @@ Perform `sbt run` several times, and eventually you will receive this error:
 
 The code causing this seems to be [`DemoClient:41-51`](src/main/scala/example/DemoClient.scala#L41-L51).
 
+However, even simplifying the `POST` to the following causes the error (albeit less frequently):
+
+```scala
+Request(
+  Method.POST,
+  Uri.unsafeFromString(url),
+).withEntity(
+  "hello".getBytes()
+)
+```
+
 ```
 [INFO] org.http4s.blaze.channel.ServerChannel - Closing NIO1 channel /127.0.0.1:9010
 io.netty.handler.codec.EncoderException: java.lang.IllegalStateException: unexpected message type: DefaultHttpRequest, state: 1
