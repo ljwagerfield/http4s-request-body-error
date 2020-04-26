@@ -30,3 +30,13 @@ Caused by: java.lang.IllegalStateException: unexpected message type: DefaultHttp
 	at io.netty.handler.codec.MessageToMessageEncoder.write(MessageToMessageEncoder.java:89)
 	... 16 more
 ```
+
+**Interestingly** if you hit a different server (i.e. not Blaze) the error doesn't occur.
+ 
+Try changing the [`DemoClient:21`](src/main/scala/example/DemoClient.scala#L21) to use `val url = "http://localhost:8000/"` instead, and then run this to create a simple Python HTTP server:
+
+```
+python -m SimpleHTTPServer
+```
+
+The error goes away!
