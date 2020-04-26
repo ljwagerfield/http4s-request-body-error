@@ -2,18 +2,7 @@
 
 Perform `sbt run` several times, and eventually you will receive this error:
 
-The code causing this seems to be [`DemoClient:41-51`](src/main/scala/example/DemoClient.scala#L41-L51).
-
-However, even simplifying the `POST` to the following causes the error (albeit less frequently):
-
-```scala
-Request(
-  Method.POST,
-  Uri.unsafeFromString(url),
-).withEntity(
-  "hello".getBytes()
-)
-```
+The code causing this seems to be [`DemoClient:42-47`](src/main/scala/example/DemoClient.scala#L42-L47).
 
 ```
 [INFO] org.http4s.blaze.channel.ServerChannel - Closing NIO1 channel /127.0.0.1:9010
